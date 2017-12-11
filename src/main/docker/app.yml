@@ -1,0 +1,14 @@
+version: '2'
+services:
+    jhipstersampleapplicationng1-app:
+        image: jhipstersampleapplicationng1
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://jhipstersampleapplicationng1-mysql:3306/jhipstersampleapplicationng1?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    jhipstersampleapplicationng1-mysql:
+        extends:
+            file: mysql.yml
+            service: jhipstersampleapplicationng1-mysql
